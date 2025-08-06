@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الوظائف والدورات التدريبية</title>
+    
+    <!-- Bootstrap CSS RTL -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Google Fonts Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0D1B2A;
+            --secondary-color: #1B263B;
+            --accent-color: #E63946;
+            --text-light: #F1FAEE;
+            --gradient-primary: linear-gradient(135deg, #0D1B2A 0%, #1B263B 100%);
+            --gradient-secondary: linear-gradient(135deg, #1B263B 0%, #415A77 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            color: var(--text-light);
+            background-color: var(--primary-color);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: rgba(13, 27, 42, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--text-light) !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            right: 50%;
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+            right: 0;
+        }
+
+        .btn-apply {
+            background: linear-gradient(45deg, var(--accent-color), #ff6b6b);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: white !important;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+        }
+
+        .btn-apply:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(230, 57, 70, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(230, 57, 70, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(65, 90, 119, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-hero {
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 10px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary-hero {
+            background: linear-gradient(45deg, var(--accent-color), #ff6b6b);
+            color: white;
+            border: none;
+        }
+
+        .btn-outline-hero {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* Jobs Section */
+        .jobs {
+            background: var(--secondary-color);
+        }
+
+        .job-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+
+        .job-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .job-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .job-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .job-card .card-body {
+            padding: 20px;
+        }
+
+        .job-card h5 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .job-card p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        /* Courses Section */
+        .courses {
+            background: var(--primary-color);
+        }
+
+        .course-slide {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0 10px;
+        }
+
+        .course-slide img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .course-info {
+            padding: 20px;
+        }
+
+        .price {
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--secondary-color);
+        }
+
+        .testimonial-image-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .testimonial-image-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .testimonial-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-image-card:hover .testimonial-image {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(13, 27, 42, 0.9));
+            color: var(--text-light);
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-image-card:hover .image-overlay {
+            transform: translateY(0);
+        }
+
+        .image-overlay h5 {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .image-overlay p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Carousel Controls for Testimonials */
+        .testimonials .carousel-control-prev,
+        .testimonials .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background: rgba(230, 57, 70, 0.8);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 20px;
+        }
+
+        .testimonials .carousel-control-prev-icon,
+        .testimonials .carousel-control-next-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .testimonials .carousel-control-prev:hover,
+        .testimonials .carousel-control-next:hover {
+            background: var(--accent-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Form Section */
+        .form-section {
+            background: var(--primary-color);
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(230, 57, 70, 0.25);
+            color: var(--text-light);
+        }
+
+        .form-control::placeholder {
+            color: rgba(241, 250, 238, 0.6);
+        }
+
+        .form-select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+        }
+
+        .form-select option {
+            background: var(--secondary-color);
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a1219;
+            padding: 40px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+
+            .testimonial-image {
+                height: 200px;
+            }
+
+            .image-overlay {
+                padding: 20px 15px 15px;
+            }
+
+            .image-overlay h5 {
+                font-size: 1rem;
+            }
+
+            .image-overlay p {
+                font-size: 0.8rem;
+            }
+
+            .testimonials .carousel-control-prev,
+            .testimonials .carousel-control-next {
+                width: 40px;
+                height: 40px;
+                margin: 0 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .testimonial-image-card {
+                margin-bottom: 15px;
+            }
+
+            .testimonial-image {
+                height: 180px;
+            }
+
+            .image-overlay {
+                padding: 15px 10px 10px;
+            }
+        }
+
+        /* Typing Animation */
+        .typing {
+            border-left: 3px solid var(--accent-color);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: var(--accent-color); }
+            51%, 100% { border-color: transparent; }
+        }
+
+        /* Custom Animations */
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-graduation-cap me-2"></i>
+                   Hireny | هييرني
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#jobs">الوظائف</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">الدورات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">التقييمات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">اتصل بنا</a>
+                    </li>
+                </ul>
+                <a href="#apply-form" class="btn btn-apply">قدم الآن</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 data-aos="fade-up" data-aos-delay="100">
+                        <span id="typed-text" class="typing"></span>
+                    </h1>
+                    <p data-aos="fade-up" data-aos-delay="300">
+                        اكتشف أفضل الفرص الوظيفية والدورات التدريبية المتخصصة لبناء مستقبلك المهني
+                    </p>
+                    <div data-aos="fade-up" data-aos-delay="500">
+                        <a href="#jobs" class="btn-hero btn-primary-hero">تصفح الوظائف</a>
+                        <a href="#courses" class="btn-hero btn-outline-hero">تصفح الدورات</a>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+                    <div class="float-animation">
+                        <i class="fas fa-rocket" style="font-size: 300px; color: rgba(230, 57, 70, 0.3);"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section class="section jobs" id="jobs">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">أحدث الوظائف المتاحة</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                اختر من بين مجموعة متنوعة من الوظائف في مختلف المجالات
+            </p>
+            <div class="row">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="job-card">
+                        <img src="https://pg-p.ctme.caltech.edu/wp-content/uploads/sites/4/2023/02/machine-learning-engineer-salary.jpg" alt="مطور برمجيات">
+                        <div class="card-body">
+                            <h5> Machine Learning Engineer</h5>
+                            <a href="#apply-form" class="btn btn-apply w-100">قدم الآن</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="job-card">
+                        <img src="https://aidegreeguide.com/wp-content/uploads/2024/02/computer-vision-engineer-job.jpg" alt="مصمم جرافيك">
+                        <div class="card-body">
+                            <h5> Computer Vision Engineer </h5>
+                            <a href="#apply-form" class="btn btn-apply w-100">قدم الآن</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="job-card">
+                        <img src="https://bunny-wp-pullzone-3xue3q6yzy.b-cdn.net/wp-content/uploads/2024/11/EM-BLOG-data-analytics-vs-data-science-1351962914.png" alt="مختص تسويق رقمي">
+                        <div class="card-body">
+                            <h5 > Data Scientist  </h5>
+                            <a href="#apply-form" class="btn btn-apply w-100">قدم الآن</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section courses" id="courses">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">الدورات التدريبية المتخصصة</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                طور مهاراتك مع دوراتنا التدريبية المتخصصة والمعتمدة
+            </p>
+            <div id="coursesCarousel" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up" data-aos-delay="200">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="course-slide">
+                                    <img src="https://storage.googleapis.com/prod-refonteinfini-bucket/refontelearning/blogs/1741869344534_0_LDiwfacu-tIAH6Xj.png" alt="دورة البرمجة">
+                                    <div class="course-info">
+                                        <span class="price">499 جنية</span>
+                                        <h5> Machine Learning Course </h5>
+                                        <p><i class="fas fa-clock me-2"></i>70 ساعة تدريبية</p>
+                                        <a href="#apply-form" class="btn btn-apply w-100">التفاصيل</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="course-slide">
+                                    <img src="https://www.gyansetu.in/wp-content/uploads/2024/02/FUqHEVVUsAAbZB0-1024x580-1.jpg" alt="دورة التصميم">
+                                    <div class="course-info">
+                                        <span class="price">399 جنية</span>
+                                        <h5> Data Science Course </h5>
+                                        <p><i class="fas fa-clock me-2"></i>35 ساعة تدريبية</p>
+                                        <a href="#apply-form" class="btn btn-apply w-100">التفاصيل</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="course-slide">
+                                    <img src="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/216158924/original/49f00a3fd2059d3c8e4b550dec1962a16848dd5c/look-for-jobs-in-computer-vision-image-processing-and-deep-learning.jpeg" alt="دورة التسويق">
+                                    <div class="course-info">
+                                        <span class="price">799 جنية</span>
+                                        <h5> Computer Vision Course </h5>
+                                        <p><i class="fas fa-clock me-2"></i>30 ساعة تدريبية</p>
+                                        <a href="#apply-form" class="btn btn-apply w-100">التفاصيل</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#coursesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#coursesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">أراء عملائنا</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                
+            </p>
+            <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-aos="fade-up" data-aos-delay="200">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4">
+                                <div class="testimonial-image-card">
+                                    <img src="./assets/photo_1_2025-08-06_23-03-42.jpg" alt="فريق العمل" class="testimonial-image">
+                                    <div class="image-overlay">
+                                        <h5>مصطفي محمد </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="testimonial-image-card">
+                                    <img src="./assets/photo_2_2025-08-06_23-03-42.jpg" alt="التدريب المهني" class="testimonial-image">
+                                    <div class="image-overlay">
+                                        <h5> ملك عماد </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="testimonial-image-card">
+                                    <img src="./assets/photo_3_2025-08-06_23-03-42.jpg" alt="الإبداع والتصميم" class="testimonial-image">
+                                    <div class="image-overlay">
+                                        <h5>سلمي عبدالحميد</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4">
+                                <div class="testimonial-image-card">
+                                    <img src="./assets/photo_4_2025-08-06_23-03-42.jpg" alt="تطوير البرمجيات" class="testimonial-image">
+                                    <div class="image-overlay">
+                                        <h5> محمد عمر</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="testimonial-image-card">
+                                    <img src="./assets/photo_5_2025-08-06_23-03-42.jpg" alt="التسويق الرقمي" class="testimonial-image">
+                                    <div class="image-overlay">
+                                        <h5> عمر السيد</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="testimonial-image-card">
+                                    <img src="./assets/photo_2025-08-06_23-09-37.jpg" alt="التسويق الرقمي" class="testimonial-image">
+                                    <div class="image-overlay">
+                                        <h5>روان بهاء </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section class="section form-section" id="apply-form">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">قدم طلبك الآن</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                املأ النموذج أدناه وسنتواصل معك في أقرب وقت
+            </p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="form-container" data-aos="fade-up" data-aos-delay="200">
+                        <form id="applicationForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">نوع الطلب</label>
+                                    <select class="form-select" id="applicationType" required>
+                                        <option value="">اختر نوع الطلب</option>
+                                        <option value="job">وظيفة</option>
+                                        <option value="course">دورة تدريبية</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">التخصص المطلوب</label>
+                                    <select class="form-select" id="specificChoice" required disabled>
+                                        <option value="">اختر النوع أولاً</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">الاسم الكامل</label>
+                                    <input type="text" class="form-control" id="fullName" placeholder="أدخل اسمك الكامل" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">رقم الهاتف</label>
+                                    <input type="tel" class="form-control" id="phoneNumber" placeholder="05xxxxxxxx" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">العمر</label>
+                                    <input type="number" class="form-control" id="age" placeholder="أدخل عمرك" min="18" max="65" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">رقم البطاقة</label>
+                                    <input type="text" class="form-control" id="idNumber" placeholder="أدخل رقم البطاقة" required 
+                                           pattern="[0-9]{14}" maxlength="14">
+                                    <small class="form-text text-light">يجب أن يتكون من 14 رقم</small>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-apply btn-lg px-5">
+                                    <i class="fas fa-paper-plane me-2"></i>إرسال الطلب
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5> Hireny | هييرني </h5>
+                    <p>نحن نساعدك في العثور على أفضل الفرص الوظيفية والدورات التدريبية لبناء مستقبل مهني مشرق</p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6>روابط سريعة</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#jobs" class="text-light">الوظائف</a></li>
+                        <li><a href="#courses" class="text-light">الدورات</a></li>
+                        <li><a href="#testimonials" class="text-light">التقييمات</a></li>
+                        <li><a href="#contact" class="text-light">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6>الخدمات</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">البحث عن وظائف</a></li>
+                        <li><a href="#" class="text-light">الدورات التدريبية</a></li>
+                        <li><a href="#" class="text-light">الاستشارات المهنية</a></li>
+                        <li><a href="#" class="text-light">تطوير المهارات</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6>تابعنا على</h6>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Hireny | هييرني. جميع الحقوق محفوظة</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="#" class="text-light me-3">سياسة الخصوصية</a>
+                    <a href="#" class="text-light">شروط الاستخدام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Typing Effect for Hero Text
+        const texts = [
+            'ابدأ رحلتك المهنية معنا',
+            'اكتشف فرص العمل المميزة',
+            'طور مهاراتك مع خبراء المجال',
+            'حقق أهدافك المهنية'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let currentText = '';
+        let isDeleting = false;
+        const typingSpeed = 100;
+        const deletingSpeed = 50;
+        const pauseTime = 2000;
+
+        function typeWriter() {
+            const typedTextElement = document.getElementById('typed-text');
+            
+            if (isDeleting) {
+                currentText = texts[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                currentText = texts[textIndex].substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            typedTextElement.textContent = currentText;
+
+            if (!isDeleting && charIndex === texts[textIndex].length) {
+                setTimeout(() => {
+                    isDeleting = true;
+                }, pauseTime);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+
+            const speed = isDeleting ? deletingSpeed : typingSpeed;
+            setTimeout(typeWriter, speed);
+        }
+
+        // Start typing effect when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(typeWriter, 1000);
+        });
+
+        // Dynamic Form Logic
+        const jobOptions = [
+            'مطور برمجيات',
+            'مصمم جرافيك',
+            'مختص تسويق رقمي',
+            'محلل بيانات',
+            'مطور مواقع ويب',
+            'مختص أمن سيبراني'
+        ];
+
+        const courseOptions = [
+            'دورة البرمجة الشاملة',
+            'دورة التصميم الجرافيكي',
+            'دورة التسويق الرقمي',
+            'دورة تحليل البيانات',
+            'دورة تطوير المواقع',
+            'دورة الأمن السيبراني'
+        ];
+
+        document.getElementById('applicationType').addEventListener('change', function() {
+            const specificChoice = document.getElementById('specificChoice');
+            const selectedType = this.value;
+            
+            specificChoice.innerHTML = '<option value="">اختر التخصص</option>';
+            
+            if (selectedType === 'job') {
+                jobOptions.forEach(job => {
+                    specificChoice.innerHTML += `<option value="${job}">${job}</option>`;
+                });
+                specificChoice.disabled = false;
+            } else if (selectedType === 'course') {
+                courseOptions.forEach(course => {
+                    specificChoice.innerHTML += `<option value="${course}">${course}</option>`;
+                });
+                specificChoice.disabled = false;
+            } else {
+                specificChoice.disabled = true;
+            }
+        });
+
+        // Form Submission with WhatsApp Integration
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const applicationType = document.getElementById('applicationType').value;
+            const specificChoice = document.getElementById('specificChoice').value;
+            const fullName = document.getElementById('fullName').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const age = document.getElementById('age').value;
+            const idNumber = document.getElementById('idNumber').value;
+            
+            // التحقق من صحة رقم البطاقة
+            if (!/^[0-9]{14}$/.test(idNumber)) {
+                alert('يرجى إدخال رقم بطاقة صحيح مكون من 14 رقم');
+                return;
+            }
+            
+            // Prepare WhatsApp message
+            const typeText = applicationType === 'job' ? 'وظيفة' : 'دورة تدريبية';
+            const message = `مرحباً، أود التقدم لـ${typeText}:
+
+التخصص: ${specificChoice}
+الاسم: ${fullName}
+رقم الهاتف: ${phoneNumber} 
+العمر: ${age}
+رقم البطاقة: ${idNumber}
+
+شكراً لكم`;
+
+            // WhatsApp API link
+            const whatsappNumber = '+201066360565';
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappLink, '_blank');
+            
+            // Show success message
+            alert('تم إرسال طلبك بنجاح! سنتواصل معك قريباً');
+            
+            // Reset form
+            this.reset();
+            document.getElementById('specificChoice').disabled = true;
+            document.getElementById('specificChoice').innerHTML = '<option value="">اختر النوع أولاً</option>';
+        });
+
+        // Add validation for ID number input
+        document.getElementById('idNumber').addEventListener('input', function() {
+            // Remove any non-digit characters
+            this.value = this.value.replace(/\D/g, '');
+            
+            // Limit to 14 digits
+            if (this.value.length > 14) {
+                this.value = this.value.slice(0, 14);
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(13, 27, 42, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(13, 27, 42, 0.95)';
+            }
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.job-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Auto-scroll testimonials
+        const testimonialsCarousel = document.getElementById('testimonialsCarousel');
+        if (testimonialsCarousel) {
+            setInterval(() => {
+                const nextButton = testimonialsCarousel.querySelector('.carousel-control-next');
+                if (nextButton) {
+                    nextButton.click();
+                }
+            }, 4000);
+        }
+
+        // Add click functionality to testimonial images
+        document.querySelectorAll('.testimonial-image-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Add a subtle animation when clicked
+                this.style.transform = 'translateY(-10px) scale(1.05)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+            document.body.style.transform = 'translateY(0)';
+        });
+
+        // Form validation styling
+        document.querySelectorAll('.form-control, .form-select').forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value.trim() === '') {
+                    this.style.borderColor = 'var(--accent-color)';
+                } else {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                }
+            });
+        });
+
+        // Phone number formatting
+        document.getElementById('phoneNumber').addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length > 0 && !value.startsWith('05')) {
+                if (value.startsWith('5')) {
+                    value = '0' + value;
+                }
+            }
+            if (value.length > 10) {
+                value = value.substring(0, 10);
+            }
+            this.value = value;
+        });
+
+        // Add scroll reveal animation for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add counter animation for statistics (if needed)
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                element.textContent = Math.floor(current);
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                }
+            }, 20);
+        }
+
+        // Preloader (optional)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
